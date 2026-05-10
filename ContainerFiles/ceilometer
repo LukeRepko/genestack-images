@@ -24,10 +24,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
                                              libxslt1-dev \
                                              pkg-config \
                                              python3-dev
+ARG CACHEBUST
 RUN curl -fsSL -o /tmp/upper-constraints.txt https://opendev.org/openstack/requirements/raw/branch/${OS_CONSTRAINTS}/upper-constraints.txt \
   && sed -i '/^ceilometer===.*/d' /tmp/upper-constraints.txt \
-  && /var/lib/openstack/bin/pip install --constraint /tmp/upper-constraints.txt \
-                                        git+https://opendev.org/openstack/ceilometer.git@${OS_VERSION}#egg=ceilometer \
+  && /var/lib/openstack/bin/pip install -vvv --constraint /tmp/upper-constraints.txt \
+                                        git+https://github.com/LukeRepko/ceilometer.git@${OS_VERSION}#egg=ceilometer \
                                         ceilometermiddleware \
                                         gnocchiclient \
                                         PyMySQL \
