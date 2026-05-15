@@ -35,7 +35,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
                                              ssl-cert \
                                              xmlsec1
 RUN /var/lib/openstack/bin/pip install --constraint https://opendev.org/openstack/requirements/raw/branch/${OS_CONSTRAINTS}/upper-constraints.txt \
-                                       git+https://opendev.org/openstack/cinder.git@${OS_VERSION}#egg=cinder \
+                                       git+https://github.com/LukeRepko/cinder.git@${OS_VERSION}#egg=cinder \
                                        cryptography \
                                        ecdsa \
                                        PyMySQL \
